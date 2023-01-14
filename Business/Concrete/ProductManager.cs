@@ -69,7 +69,7 @@ namespace Business.Concrete
 
         }
 
-        [SecuredOperation("Product.GetAll,Admin")]
+        //[SecuredOperation("Product.GetAll,Admin")]
         [CacheAspect]
         public IDataResult<List<Product>> GetAll()
         {

@@ -33,6 +33,8 @@ builder.Services.AddSwaggerGen();
 //builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 //ServiceTool.Create(builder.Services);
 
+//API'den eriþime izin veriyoruz.
+builder.Services.AddCors();
 
 //Bu sistemde Authentication JWT kullanýlacak, haberin olsun dediðimiz yer burasý.
 
@@ -73,6 +75,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+//Apiden eriþime izin veriyoruz. AllowAnyHeader:Apiden ne istek gelirse gelsin izin ver.
+//Eðer birden fazla yerden istek gelmesini istiyorsak domainleri virgül koyup ekleriz.
+app.UseCors(builder=>builder.WithOrigins("http://localhost:4200").AllowAnyHeader());
 
 app.UseHttpsRedirection();
 
