@@ -77,6 +77,9 @@ if (app.Environment.IsDevelopment())
 }
 //Apiden eriþime izin veriyoruz. AllowAnyHeader:Apiden ne istek gelirse gelsin izin ver.
 //Eðer birden fazla yerden istek gelmesini istiyorsak domainleri virgül koyup ekleriz.
+
+app.ConfigureCustomExceptionMiddleware();//Backend exceptionlarýný yakalýyoruz. Bu middleware ý biz ekledik. Tum sistem try catch blogu arasina alindi.
+
 app.UseCors(builder=>builder.WithOrigins("http://localhost:4200").AllowAnyHeader());
 
 app.UseHttpsRedirection();
